@@ -2,7 +2,7 @@ FROM php:8.2-fpm
 
 ENV TZ Asia/Tokyo
 
-RUN apt-get update 
+RUN apt-get update \
     && apt-get install -y \
     git \
     unzip \
