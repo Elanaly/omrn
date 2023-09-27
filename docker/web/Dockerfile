@@ -1,4 +1,4 @@
-ROM nginx:1.25-alpine
+FROM nginx:1.25-alpine
 
 ENV TZ Asia/Tokyo
 
