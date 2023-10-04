@@ -12,6 +12,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            UserSeeder::class,
+            EventSeeder::class,
+            BookmarkSeeder::class,
+            CommentSeeder::class,
+            TagSeeder::class,
+            TagMapSeeder::class,
+            AttendStatusSeeder::class
+        ]);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
