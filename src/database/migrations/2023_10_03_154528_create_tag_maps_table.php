@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('tag_maps', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('tag_id');
+            $table->foreignId('event_id');
         });
     }
 

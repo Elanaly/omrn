@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id');
+            $table->foreignId('event_id');
+            $table->timestamp('create_at')->useCurrent()->nullable();
         });
     }
 
