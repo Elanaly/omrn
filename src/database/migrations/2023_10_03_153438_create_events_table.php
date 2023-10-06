@@ -21,6 +21,7 @@ return new class extends Migration
             $table->double('lat', 8, 6)->nullable();
             $table->double('lng', 9, 6)->nullable();
             $table->integer('capacity')->nullable();
+            $table->boolean('is_online')->nullable()->default(false);
             $table->timestamps();
             $table->foreignId('user_id');
         });
