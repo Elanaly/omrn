@@ -8,7 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
-    // public function comment(){
-    //     return $this->belongsTo(Comment::class);
-    // }
+    
 }
