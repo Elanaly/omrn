@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use response;
+
 class EventController extends Controller
 {
     /**
@@ -27,7 +29,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -60,5 +62,21 @@ class EventController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Upload the image 
+     */
+    public function uploadimage(Request $request){
+        if($request->hasFile('image')){
+            $originalName = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($originalName, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+
+            $request->file('image')->storeAs('public/images', $fileName);
+            $url = asset('storage/images/' . $fileName);
+            return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
+        }
     }
 }
