@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UploadImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ Route::prefix('events')
     Route::post('/{id}/destory', 'destory')->name('destory');
 });
 
+Route::post('/upload-image', [EventController::class, 'uploadimage'])
+    ->name('image.upload');
+
 Route::prefix('events')
 ->controller(EventController::class)
 ->name('events.')
@@ -42,8 +46,6 @@ Route::prefix('events')
     Route::get('/', 'index')->name('index');
     Route::get('/{id}', 'show')->name('show');
 });
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
